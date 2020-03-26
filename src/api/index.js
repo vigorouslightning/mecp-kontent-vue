@@ -1,5 +1,6 @@
-import contentful from './contentful';
+//import contentful from './contentful';
+import kontent from './kontent';
 
 export default {
-contentful
+kontent
 };
