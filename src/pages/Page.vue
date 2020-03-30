@@ -79,20 +79,23 @@ export default {
   },
   methods: {
     getComponent(zone) {
-      // zones can have layout sections (that contain widgets) or plain widgets
-      let type = zone.sys.contentType.sys.id;
+      let type = zone.system.type;
       let widget = helpers.components.getWidgetComponent(type);
+      console.log('Type: ' + type);
+      console.log('widget: ' + widget);
       return widget;
     },
     async byId(id) {
-      this.page = (await api.contentful.byId(id)).fields;
+      //this.page = (await api.contentful.byId(id)).fields;
     },
     async bySlug(slug) {
-      let response = await api.contentful.bySlug(slug);
-      if (response.fields.widgetZone === undefined)
-        return;
-      this.widgetZone = response.fields.widgetZone;
-      this.title = response.fields.title;
+      let response = await api.kontent.bySlug(slug);
+      this.title = response.title.value;
+      this.widgetZone = response.widgetZone.value;
+      // if (response.fields.widgetZone === undefined)
+      //   return;
+      // this.widgetZone = response.fields.widgetZone;
+      // this.title = response.fields.title;
     },
     init() {
       let id = this.$route.params.id;

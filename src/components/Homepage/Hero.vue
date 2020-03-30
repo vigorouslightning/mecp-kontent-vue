@@ -35,19 +35,19 @@
 
 <script>
 import { mapActions, mapState } from 'vuex';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+// import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+// import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 
-const textOptions = {
-  renderMark: {
-    [MARKS.BOLD]: text => `<strong>${text}</strong>`
-  },
-  renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, next) => {
-      return next(node.content);
-    }
-  }
-};
+// const textOptions = {
+//   renderMark: {
+//     [MARKS.BOLD]: text => `<strong>${text}</strong>`
+//   },
+//   renderNode: {
+//     [BLOCKS.PARAGRAPH]: (node, next) => {
+//       return next(node.content);
+//     }
+//   }
+// };
 
 export default {
   name: 'Hero',

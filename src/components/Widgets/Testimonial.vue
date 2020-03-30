@@ -5,19 +5,19 @@
 </template>
 
 <script>
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
+// import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+// import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 
-const options = {
-  renderMark: {
-    [MARKS.BOLD]: text => `<strong>${text}</strong>`
-  },
-  renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, next) => {
-        return next(node.content);
-    },
-  }
-};
+// const options = {
+//   renderMark: {
+//     [MARKS.BOLD]: text => `<strong>${text}</strong>`
+//   },
+//   renderNode: {
+//     [BLOCKS.PARAGRAPH]: (node, next) => {
+//         return next(node.content);
+//     },
+//   }
+// };
 
 export default {
   name: 'Testimonial',
@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     quote() {
-      return `&#8220;${documentToHtmlString(this.widget.fields.quote, options)}&#8221;`;
+      return `&#8220;${this.widget.fields.quote}&#8221;`;
 
     },
     source() {

@@ -31,7 +31,7 @@ export default {
   mounted: function() {},
     methods: {
     async byId(id) {
-      this.logo = (await api.contentful.getAsset(id)).fields.file.url;
+      this.logo = 'kyletest.jpg'; //(await api.contentful.getAsset(id)).fields.file.url;
     },
     init() {
       let id = process.env.VUE_APP_HOMEPAGE_LOGO;

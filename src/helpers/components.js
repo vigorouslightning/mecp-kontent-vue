@@ -1,6 +1,14 @@
 export default {
   getComponent(type) {
-    return type.replace(/^\w/, c => c.toUpperCase()).replace(' ', '');
+    var parts = type.split('_');
+    var final = '';
+    parts.forEach (part => {
+      part = part.charAt(0).toUpperCase() + part.slice(1);
+      console.log('Part: ' + part);
+      final += part;
+    });
+    console.log('Final: ' + final.toString());
+    return final;
   },
   getWidgetComponent(type) {
     type = this.getComponent(type);

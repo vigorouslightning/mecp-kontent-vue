@@ -37,34 +37,34 @@
 </template>
 
 <script>
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
+// import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+// import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 import helpers from '@/helpers';
 
-const options = {
-  renderMark: {
-    [MARKS.BOLD]: text => `<strong>${text}</strong>`
-  },
-  renderNode: {
-    [BLOCKS.PARAGRAPH]: (node, next) => {
-      if (
-        node.content.length === 1 &&
-        node.content[0].nodeType === 'text' &&
-        node.content[0].value.match(/^ *$/) !== null
-      )
-        return '';
-      else {
-        return `<p>${next(node.content)}</p>`;
-      }
-    },
-    [INLINES.ENTRY_HYPERLINK]: (node, next) => {
-      return helpers.resolvers.inlines_entry_hyperlink(
-        node,
-        next(node.content)
-      );
-    }
-  }
-};
+// const options = {
+//   renderMark: {
+//     [MARKS.BOLD]: text => `<strong>${text}</strong>`
+//   },
+//   renderNode: {
+//     [BLOCKS.PARAGRAPH]: (node, next) => {
+//       if (
+//         node.content.length === 1 &&
+//         node.content[0].nodeType === 'text' &&
+//         node.content[0].value.match(/^ *$/) !== null
+//       )
+//         return '';
+//       else {
+//         return `<p>${next(node.content)}</p>`;
+//       }
+//     },
+//     [INLINES.ENTRY_HYPERLINK]: (node, next) => {
+//       return helpers.resolvers.inlines_entry_hyperlink(
+//         node,
+//         next(node.content)
+//       );
+//     }
+//   }
+// };
 
 export default {
   name: 'Promo',
@@ -91,10 +91,6 @@ export default {
         ? this.promo.linkedPage.sys.id
         : undefined
     };
-    this.promo.description = documentToHtmlString(
-      this.promo.description,
-      options
-    );
 
   }
 };
