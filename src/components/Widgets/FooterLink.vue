@@ -16,10 +16,10 @@ export default {
   },
   computed: {
     title() {
-      return this.link.fields.title;
+      return this.link.title.value;
     },
     href() {
-      return `/${this.link.fields.slug}`;
+      return `/${this.link.slug.value}`;
     },
   }
 };

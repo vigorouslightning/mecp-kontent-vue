@@ -16,13 +16,13 @@ export default {
   },
   computed: {
     title() {
-      return this.link.fields.title;
+      return this.link.link_title.value;
     },
     href() {
-      return this.link.fields.target;
+      return this.link.link_target.value;
     },
     target() {
-        return this.link.fields.newTab ? '_blank' : '';
+        return false; //this.link.newTab.value ? '_blank' : '';
     },
   }
 };

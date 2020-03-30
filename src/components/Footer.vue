@@ -11,18 +11,18 @@
             </strong>
             <br />
             <FooterLink
-              v-for="(link, index) in content.links"
-              :key="link.slug"
+              v-for="(link, index) in content.links.value"
+              :key="link.slug.value"
               v-bind:link="link"
-              v-bind:isLast="index === Object.keys(content.links).length - 1"
+              v-bind:isLast="index === Object.keys(content.links.value).length - 1"
             />
 
             <br />
             <ExternalLink
-              v-for="(link, index) in content.externalLinks"
+              v-for="(link, index) in content.externalLinks.value"
               :key="index"
               v-bind:link="link"
-              v-bind:isLast="index === Object.keys(content.externalLinks).length - 1"
+              v-bind:isLast="index === Object.keys(content.externalLinks.value).length - 1"
             />
           </p>
         </div>
@@ -31,11 +31,11 @@
             <strong>CONTACT US</strong>
             <br />
             <strong>T</strong>
-            &nbsp;{{content.phone}}
+            &nbsp;{{content.contactPhone.value}}
             <br />
             <strong>
               E&nbsp;
-              <a :href="mailto">{{content.email}}</a>
+              <a :href="mailto">{{content.contactEmail.value}}</a>
             </strong>
           </p>
         </div>
@@ -74,8 +74,11 @@ export default {
   },
   methods: {
     async init() {
-      let response = await api.contentful.getFooterContent();
-      this.content = response.items[0].fields;
+      // let response = await api.contentful.getFooterContent();
+      // this.content = response.items[0].fields;
+      var something = await api.kontent.getFooterContent();
+      console.log('something: ' + something);
+      this.content = something;
     }
   }
 };
