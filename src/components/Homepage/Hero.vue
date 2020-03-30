@@ -1,6 +1,6 @@
 <template>
   <section class="bg-hero full-height home container-fluid">
-    <img title="MECP" :src="hero.image" alt="MECP" />
+    <!-- <img title="MECP" :src="hero.image" alt="MECP" />
     <div id="mission-statement" class="content sticky-item">
       <h1 class="title">
         <p v-html="hero.text"></p>
@@ -29,7 +29,8 @@
     <a
       class="scroll-down-button icon-down-arrow"
       href="/index.html#aboutMECP"
-    ></a>
+    ></a> -->
+    This is a test
   </section>
 </template>
 
@@ -54,27 +55,27 @@ export default {
   props: {
     hero: Object
   },
-  data: () => ({
-    nav: Array,
-  }),
-  computed: {
-    ...mapState('nav', ['navItems']),
-  },
-  created() {
-    this.buildNav();
-  },
-  methods: {
-    ...mapActions({
-      fetchNav: 'nav/fetch'
-    }),
-    async buildNav() {
-      let nav = Array;
-      let n = this.navItems;
-      if (Array.isArray(n) && n.length) nav = n;
-      else nav = await this.fetchNav();
-      // only want the top 3
-      this.nav = nav.slice(0, 3);
-    }
-  }
+  // data: () => ({
+  //   nav: Array,
+  // }),
+  // computed: {
+  //   ...mapState('nav', ['navItems']),
+  // },
+  // created() {
+  //   this.buildNav();
+  // },
+  // methods: {
+  //   ...mapActions({
+  //     fetchNav: 'nav/fetch'
+  //   }),
+  //   async buildNav() {
+  //     let nav = Array;
+  //     let n = this.navItems;
+  //     if (Array.isArray(n) && n.length) nav = n;
+  //     else nav = await this.fetchNav();
+  //     // only want the top 3
+  //     this.nav = nav.slice(0, 3);
+  //   }
+  // }
 };
 </script>
