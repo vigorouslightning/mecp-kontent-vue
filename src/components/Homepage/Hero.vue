@@ -7,7 +7,7 @@
         <p v-html="hero.text"></p>
       </h1>
       <br /><br />
-      <!-- <section v-if="nav.length > 0">
+      <section v-if="nav.length > 0">
         <div class="buttons container" v-if="nav.length > 0">
           <div
             class="col-md-6 col-lg-4"
@@ -25,7 +25,7 @@
             </router-link>
           </div>
         </div>
-      </section> -->
+      </section>
     </div>
     <a
       class="scroll-down-button icon-down-arrow"
@@ -59,27 +59,27 @@ export default {
   props: {
     hero: Object
   },
-  // data: () => ({
-  //   nav: Array,
-  // }),
-  // computed: {
-  //   ...mapState('nav', ['navItems']),
-  // },
-  // created() {
-  //   this.buildNav();
-  // },
-  // methods: {
-  //   ...mapActions({
-  //     fetchNav: 'nav/fetch'
-  //   }),
-  //   async buildNav() {
-  //     let nav = Array;
-  //     let n = this.navItems;
-  //     if (Array.isArray(n) && n.length) nav = n;
-  //     else nav = await this.fetchNav();
-  //     // only want the top 3
-  //     this.nav = nav.slice(0, 3);
-  //   }
-  // }
+  data: () => ({
+    nav: Array,
+  }),
+  computed: {
+    ...mapState('nav', ['navItems']),
+  },
+  created() {
+    this.buildNav();
+  },
+  methods: {
+    ...mapActions({
+      fetchNav: 'nav/fetch'
+    }),
+    async buildNav() {
+      let nav = Array;
+      let n = this.navItems;
+      if (Array.isArray(n) && n.length) nav = n;
+      else nav = await this.fetchNav();
+      // only want the top 3
+      this.nav = nav.slice(0, 3);
+    }
+  }
 };
 </script>

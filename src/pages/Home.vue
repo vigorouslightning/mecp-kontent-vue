@@ -4,13 +4,12 @@
   </section>
   <section v-else>
     <hero v-bind:hero="hero" />
-    <!-- <About v-bind:about="about" /> -->
+    <About v-bind:about="about" />
     <Promo
       v-for="(promo, index) in content.promoZone.value"
       :key="index"
       v-bind:widget="promo"
     />
-
   </section>
 </template>
 
@@ -63,9 +62,9 @@ export default {
     },
     about() {
       return {
-        title: 'test', //this.content.pageTitle.value,
-        logo: 'test.jpg', //this.content.mecpLogo.value.url,
-        text: 'text'//this.content.text.value,
+        title: this.content.pageTitle.value,
+        logo: this.content.mecpLogo.value[0].url,
+        text: this.content.introText.value,
       }
     }
   },
@@ -74,10 +73,7 @@ export default {
   },
   methods: {
     async getContent() {
-      console.log('before response');
-      let something = await api.kontent.getHomePage();
-      //console.log('after response: ' + JSON.stringify(something));
-      this.content = something;
+      this.content = await api.kontent.getHomePage();
     }
   }
 };

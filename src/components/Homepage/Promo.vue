@@ -1,7 +1,7 @@
 <template>
   <section
     class="padding-top-sm padding-bottom-sm"
-    :style="{'background-image' : 'url(' + widget.background_image.value[0].url + ')'}"
+    :style="{'background-image' : 'url(' + widget.backgroundImage.value[0].url + ')'}"
     style="background-size: cover;"
   >
     <div class="container">

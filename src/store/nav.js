@@ -16,7 +16,7 @@ const mutations = {
 
 const actions = {
   async fetch({ commit }) {
-    let parent = await api.contentful.getMainNav();
+    let parent = await api.kontent.getMainNav();
     let nav = mapChild(parent);
     commit('SET_NAV_ITEMS', nav);
     return nav;
@@ -24,15 +24,16 @@ const actions = {
 };
 
 const mapChild = parent => {
+  console.log('parent: ' + parent);
   return parent.map(item => {
-    const children = item.fields.children;
+    const children = item.children.value;
     return {
-      id: item.sys.id,
-      slug: item.fields.slug,
-      name: item.fields.name,
-      parent: item.fields.parent,
-      children:
-        children !== undefined && children.length > 0 ? mapChild(children) : []
+      id: 'test',
+      slug: item.slug.value,
+      name: item.name.value,
+      parent: item.parent.value,
+      // children:
+      //   children !== undefined && children.value.length > 0 ? mapChild(children) : []
     };
   });
 };
