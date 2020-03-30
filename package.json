@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@kentico/kontent-delivery": "^9.1.0",
+    "@kentico/kontent-model-generator": "^3.2.0",
     "core-js": "^3.6.4",
     "flatted": "^2.0.1",
     "rxjs": "^6.5.4",
