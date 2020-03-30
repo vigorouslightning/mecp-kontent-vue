@@ -3,7 +3,7 @@
     <span>loading...</span>
   </section>
   <section v-else>
-    <!-- <hero v-bind:hero="hero" /> -->
+    <hero v-bind:hero="hero" />
     <!-- <About v-bind:about="about" /> -->
     <Promo
       v-for="(promo, index) in content.promoZone.value"
@@ -52,14 +52,13 @@ export default {
   }),
   computed: {
     loaded() {
-      return true;
-      //return Object.keys(this.content).length > 0;
+      return Object.keys(this.content).length > 0;
     },
     hero() {
       return {
-        //text: this.content.heroText.value,
-        //image: this.content.heroImage.value[0].url,
-        //links: this.content.heroLinks
+        text: this.content.heroText.value,
+        image: this.content.heroImage.value[0].url,
+        links: [], //this.content.heroLinks
       }
     },
     about() {

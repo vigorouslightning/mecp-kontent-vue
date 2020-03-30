@@ -1,12 +1,13 @@
 <template>
   <section class="bg-hero full-height home container-fluid">
-    <!-- <img title="MECP" :src="hero.image" alt="MECP" />
+    {{hero}}
+    <img title="MECP" :src="hero.image" alt="MECP" />
     <div id="mission-statement" class="content sticky-item">
       <h1 class="title">
         <p v-html="hero.text"></p>
       </h1>
       <br /><br />
-      <section v-if="nav.length > 0">
+      <!-- <section v-if="nav.length > 0">
         <div class="buttons container" v-if="nav.length > 0">
           <div
             class="col-md-6 col-lg-4"
@@ -24,14 +25,17 @@
             </router-link>
           </div>
         </div>
-      </section>
+      </section> -->
     </div>
     <a
       class="scroll-down-button icon-down-arrow"
       href="/index.html#aboutMECP"
-    ></a> -->
-    This is a test
+    ></a>   
   </section>
+  <!-- <div>
+    {{hero}}
+    <hr>
+  </div> -->
 </template>
 
 <script>

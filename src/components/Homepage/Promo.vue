@@ -1,21 +1,21 @@
 <template>
-  <!-- <section
+  <section
     class="padding-top-sm padding-bottom-sm"
-    :style="promo.backgroundImage"
+    :style="{'background-image' : 'url(' + widget.background_image.value[0].url + ')'}"
     style="background-size: cover;"
   >
     <div class="container">
       <div class="row">
         <div class="col-lg-offset-3 col-lg-9">
           <h2>
-            <p>{{ promo.title }}</p>
+            <p>{{ widget.title.value }}</p>
           </h2>
         </div>
       </div>
       <div class="row padding-vertical-lg">
-        <div class="col-lg-offset-3 col-lg-9" v-html="promo.description"></div>
+        <div class="col-lg-offset-3 col-lg-9" v-html="widget.description.value"></div>
       </div>
-      <div v-if="promo.showLearnMoreLink" class="row">
+      <!-- <div v-if="widget.showLearnMoreLink" class="row">
         <div class="col-sm-offset-6 col-sm-6 col-md-offset-8 col-md-4">
           <router-link
             :to="{
@@ -31,12 +31,9 @@
             <span>&gt;</span>
           </router-link>
         </div>
-      </div>
+      </div> -->
     </div>
-  </section> -->
-  <div>
-    Kyle Promo
-  </div>
+  </section>
 </template>
 
 <script>
