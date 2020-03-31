@@ -1,7 +1,7 @@
 <template>
   <section
     class="padding-top-sm padding-bottom-sm"
-    :style="{'background-image' : 'url(' + widget.backgroundImage.value[0].url + ')'}"
+    :style="{'background-image' : 'url(' + image + ')'}"
     style="background-size: cover;"
   >
     <div class="container">
@@ -74,24 +74,14 @@ export default {
   data: () => ({
     promo: Object
   }),
-  mounted: function() {
-    // this.promo = this.widget.fields;
-    // this.promo.showBackgroundImage = this.promo.backgroundImage !== undefined;
-    // this.promo.backgroundImage = this.promo.showBackgroundImage
-    //   ? {
-    //       'background-image': `url(${this.promo.backgroundImage.fields.file.url})`
-    //     }
-    //   : undefined;
-    // this.promo.showLearnMoreLink = this.promo.linkedPage !== undefined;
-    // this.promo.relatedContent = {
-    //   slug: this.promo.showLearnMoreLink
-    //     ? this.promo.linkedPage.fields.slug
-    //     : undefined,
-    //   entryId: this.promo.showLearnMoreLink
-    //     ? this.promo.linkedPage.sys.id
-    //     : undefined
-    // };
-
+  computed: {
+    image() {
+      if (this.widget.backgroundImage.value.length > 0) {
+        return this.widget.backgroundImage.value[0].url;
+      }
+      else
+        return '';
+    }
   }
 };
 </script>
