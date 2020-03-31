@@ -33,6 +33,7 @@ export default {
     async getMainNav() {
         return await deliveryClient.items()
         .type('homepage')
+        .depthParameter(3)
         .toPromise()
         .then(response => {
             return response.items[0].children.value;
