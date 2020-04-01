@@ -14,6 +14,7 @@ export default {
     async bySlug(slug) {
         return await deliveryClient.items()
         .type('page')
+        .depthParameter(3)
         .equalsFilter('elements.slug', slug)
         .toPromise()
         .then(response => {
