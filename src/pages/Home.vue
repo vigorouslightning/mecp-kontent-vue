@@ -51,7 +51,7 @@ export default {
     content: Array,
     pageTitle: String,
     promos: Object,
-    sticky: true
+    sticky: Boolean
   }),
   computed: {
     loaded() {
@@ -73,6 +73,7 @@ export default {
     }
   },
   mounted: async function() {
+    this.sticky = false;
     await this.getContent();
     let _this = this;
     window.addEventListener('scroll', function() {
@@ -87,7 +88,6 @@ export default {
         _this.sticky = false;
       }
     });
-    this.sticky = false;
   },
   destroyed() {
     window.removeEventListener('scroll')

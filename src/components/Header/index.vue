@@ -16,7 +16,10 @@ import SubNav from './SubNav'
 export default {
   name: 'Header',
   props: {
-    sticky: Boolean
+    sticky: {
+      type: Boolean,
+      default: true
+    }
   },
   components: {
     Logo,
