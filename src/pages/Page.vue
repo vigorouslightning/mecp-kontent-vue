@@ -32,7 +32,7 @@ import Header from '@/components/Header';
 import CallToAction from '@/components/Widgets/CallToAction';
 import Copy from '@/components/Widgets/Copy';
 import EmbeddedVideo from '@/components/Widgets/EmbeddedVideo';
-import FormStack from '@/components/Widgets/FormStack';
+import EmbeddedFormStack from '@/components/Widgets/FormStack';
 import FloatedImage from '@/components/Widgets/FloatedImage';
 import Testimonial from '@/components/Widgets/Testimonial';
 
@@ -47,7 +47,7 @@ export default {
     CallToAction,
     Copy,
     EmbeddedVideo,
-    FormStack,
+    EmbeddedFormStack,
     FloatedImage,
     Testimonial
   },
