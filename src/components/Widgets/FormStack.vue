@@ -12,16 +12,16 @@ export default {
   },
   computed: {
     width() {
-      return this.widget.fields.width ? `${this.widget.fields.width}px` : '100%';
+      return this.widget.width.value ? `${this.widget.width.value}px` : '100%';
     },
     height() {
-      return this.widget.fields.height ? `${this.widget.fields.height}px` : '100%';
+      return this.widget.height.value ? `${this.widget.height.value}px` : '100%';
     },
     src() {
-      return `https://cea.formstack.com/forms/${this.widget.fields.slug}`;
+      return `https://cea.formstack.com/forms/${this.widget.slug.value}`;
     },
     name() {
-      return this.widget.fields.name;
+      return this.widget.name.value;
     }
   }
 };

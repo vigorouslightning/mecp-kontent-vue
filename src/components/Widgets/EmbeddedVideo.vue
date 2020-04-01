@@ -5,8 +5,8 @@
         <iframe
           frameborder="0"
           :height="height"
-          :src="widget.fields.link"
-          :title="widget.fields.name"
+          :src="widget.link.value"
+          :title="widget.name.value"
           :width="width"
           :allow="fullscreen"
           :mozallowfullscreen="allowFullscreen"
@@ -26,20 +26,20 @@ export default {
   },
   computed: {
     width() {
-      return this.widget.fields.width
-        ? `${this.widget.fields.width}px`
+      return this.widget.width.value
+        ? `${this.widget.width.value}px`
         : '100%';
     },
     height() {
-      return this.widget.fields.height
-        ? `${this.widget.fields.height}px`
+      return this.widget.height.value
+        ? `${this.widget.height.value}px`
         : '100%';
     },
     fullscreen() {
-      return this.widget.fields.allowFullScreen ? 'allowfullscreen' : '';
+      return this.widget.allowfullscreen.value[0].name ? 'allowfullscreen' : '';
     },
     allowFullscreen() {
-      return this.widget.fields.allowFullScreen;
+      return this.widget.allowfullscreen.value[0].name;
     },
   }
 };

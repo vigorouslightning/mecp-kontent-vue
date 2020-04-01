@@ -26,17 +26,17 @@ export default {
   },
   computed: {
     quote() {
-      return `&#8220;${this.widget.fields.quote}&#8221;`;
+      return `&#8220;${this.widget.quote.value}&#8221;`;
 
     },
     source() {
-      return this.widget.fields.quotedSource;
+      return this.widget.quoted_source.value;
     },
     title() {
-      return this.widget.fields.title;
+      return this.widget.title.value;
     },
     company() {
-      return this.widget.fields.company;
+      return this.widget.company.value;
     },
   }
 };
