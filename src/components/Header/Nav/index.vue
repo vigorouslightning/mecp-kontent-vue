@@ -1,7 +1,7 @@
 <template>
   <nav class="col-xs-6 col-sm-8 col-lg-9">
     <Utility />
-    <Main />
+    <Main v-if="!isHome"/>
   </nav>
 </template>
 
@@ -15,5 +15,10 @@ export default {
       Utility,
       Main
   },
+  computed: {
+    isHome() {
+      return this.$route.name === 'home';
+    }
+  }
 };
 </script>

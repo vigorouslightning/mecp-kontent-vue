@@ -3,6 +3,7 @@
     <span>loading...</span>
   </section>
   <section v-else>
+    <Header v-bind:sticky="sticky" />
     <hero v-bind:hero="hero" />
     <About v-bind:about="about" />
     <Promo
@@ -17,6 +18,7 @@
 import Hero from '@/components/Homepage/Hero';
 import About from '@/components/Homepage/About';
 import Promo from '@/components/Homepage/Promo';
+import Header from '@/components/Header';
 
 import api from '@/api';
 // import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
@@ -38,7 +40,8 @@ export default {
   components: {
     Hero,
     About,
-    Promo
+    Promo,
+    Header
   },
   props: {
     url: String,
@@ -47,7 +50,8 @@ export default {
   data: () => ({
     content: Array,
     pageTitle: String,
-    promos: Object
+    promos: Object,
+    sticky: true
   }),
   computed: {
     loaded() {
@@ -68,8 +72,25 @@ export default {
       }
     }
   },
-  mounted: function() {
-    this.getContent();
+  mounted: async function() {
+    await this.getContent();
+    let _this = this;
+    window.addEventListener('scroll', function() {
+      var header = document.querySelector('.page-section-header');
+      var scrollTop = parseInt(window.scrollY);
+      var otherTop = parseInt(document.getElementById('mission-statement').offsetTop);
+      var headerHeight = parseInt(header.offsetHeight);
+
+      if (otherTop - scrollTop <= headerHeight + 50) {
+        _this.sticky = true;
+      } else {
+        _this.sticky = false;
+      }
+    });
+    this.sticky = false;
+  },
+  destroyed() {
+    window.removeEventListener('scroll')
   },
   methods: {
     async getContent() {
