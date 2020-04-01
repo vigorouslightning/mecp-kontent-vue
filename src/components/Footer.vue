@@ -76,9 +76,7 @@ export default {
     async init() {
       // let response = await api.contentful.getFooterContent();
       // this.content = response.items[0].fields;
-      var something = await api.kontent.getFooterContent();
-      console.log('something: ' + something);
-      this.content = something;
+      this.content = await api.kontent.getFooterContent();
     }
   }
 };

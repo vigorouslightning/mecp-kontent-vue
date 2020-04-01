@@ -81,8 +81,6 @@ export default {
     getComponent(zone) {
       let type = zone.system.type;
       let widget = helpers.components.getWidgetComponent(type);
-      console.log('Type: ' + type);
-      console.log('widget: ' + widget);
       return widget;
     },
     async byId(id) {

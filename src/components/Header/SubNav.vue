@@ -105,7 +105,6 @@ const getParent = child => {
   function _getParent(_child) {
     let slug = _child.slug;
     if (slug !== undefined && _child.parent !== undefined && typeof(slug) === 'string') {
-      console.log('Adding slug: ' + slug)
       parents.push(slug);
       _getParent(_child.parent);
     }
