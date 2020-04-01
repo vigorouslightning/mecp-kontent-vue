@@ -1,4 +1,6 @@
 import api from '@/api';
+import { ItemResponses } from '@kentico/kontent-delivery';
+var index = 0;
 
 const state = {
   navItems: Array
@@ -23,17 +25,25 @@ const actions = {
   }
 };
 
+// In this function Children are mapped as the return object, 
+//however Parent is type of Page and since that is an observable it is much harder to access it's properties
+// This causes issues with the buildLink method in SubNav.vue
+// parent: 
+
+// parent is an array of 4 top level nav pages, Employers, Vehicles, Professionals, Study Guides
+// second time through 
 const mapChild = parent => {
-  console.log('parent: ' + parent);
   return parent.map(item => {
+    // item is a Kentico page at this point
     const children = item.children.value;
+    // children are Kentico pages at this point as well (if there are any)
     return {
-      id: 'test',
+      id: item.name.value,
       slug: item.slug.value,
       name: item.name.value,
-      parent: item.parent.value,
-      // children:
-      //   children !== undefined && children.value.length > 0 ? mapChild(children) : []
+      parent: {id: item.parent.value[0].name.value, slug: item.parent.value[0].slug.value, name: item.parent.value[0].name.value, parent: item.parent.value[0]},
+      children:
+         children !== undefined && children.length > 0 ? mapChild(children) : []
     };
   });
 };

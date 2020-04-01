@@ -44,7 +44,8 @@ export default {
       return this.$route.params.slug;
     },
     display() {
-      return Array.isArray(this.subNav) && this.subNav.length > 0
+      return true;
+      //return Array.isArray(this.subNav) && this.subNav.length > 0
     }
   },
   watch: {
@@ -60,7 +61,7 @@ export default {
       fetchNav: 'nav/fetch'
     }),
     buildLink(item) {
-      let parents = getParent(item.parent.fields);
+      let parents = getParent(item.parent);
       return `/${parents.join('/')}/${item.slug}`;
     },
     async buildSubNav() {
@@ -77,7 +78,7 @@ export default {
         let response = await api.contentful.bySlug(slug);
         let a = [];
         this.hideOverview = false;
-        for (let child of response.fields.parent.fields.children) a.push(child.fields);
+        for (let child of response.parent.children.value) a.push(child);
         this.subNav = a;
       } else this.subNav = subNav.children;
     },
@@ -92,13 +93,26 @@ export default {
   }
 };
 
+  // Second time through I am getting an Observe Object as child.  THe parent is a differnet object
+  // The only way to get it is child[0].slug.value
+  // Lots of wonkiness with this stemming from the getNavigation Child/Parent differents
+
+  // How does router link stay active for top level pages??
 const getParent = child => {
-  let parent = [];
-  let slug = child.slug;
-  if (slug !== undefined && child.parent !== undefined) {
-    parent.push(slug);
-    parent.concat(getParent(child.parent.fields));
+  let parents = [];
+
+  // Create closeure for parent array
+  function _getParent(_child) {
+    let slug = _child.slug;
+    if (slug !== undefined && _child.parent !== undefined && typeof(slug) === 'string') {
+      console.log('Adding slug: ' + slug)
+      parents.push(slug);
+      _getParent(_child.parent);
+    }
   }
-  return parent;
+
+  _getParent(child);
+
+  return parents;
 };
 </script>
