@@ -25,11 +25,11 @@ export default {
     guides: Array
   }),
   mounted: function() {
-    this.guides = this.widget.fields.widgetZone;
+    this.guides = this.widget.widget_zone.value;
   },
   methods: {
     getComponent(widget) {
-      let type = widget.sys.contentType.sys.id;
+      let type = widget.system.type;
       return helpers.components.getWidgetComponent(type);
     }
   }

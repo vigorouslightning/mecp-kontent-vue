@@ -3,18 +3,18 @@
     <div class="image-wrapper">
       <img
         class="img-fluid"
-        :src="guide.fields.coverImage.fields.file.url"
-        :alt="guide.fields.title"
+        :src="guide.image.value[0].url"
+        :alt="guide.title.value"
       />
     </div>
     <div class="guide-title">
-      {{ guide.fields.title }}
+      {{ guide.title.value }}
     </div>
     <div class="price">
-      <a :href="href">Member Price: ${{ guide.fields.memberPrice }}.00</a>
+      <!-- <a :href="href">Member Price: ${{ guide.fields.memberPrice }}.00</a> -->
     </div>
     <div class="price">
-      <a :href="href">Nonmember Price: ${{ guide.fields.nonmemberPrice }}.00</a>
+      <!-- <a :href="href">Nonmember Price: ${{ guide.fields.nonmemberPrice }}.00</a> -->
     </div>
   </div>
 </template>
@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     href() {
-      return `https://members.cta.tech/ctaMerchandiseDetail/?id=${this.guide.fields.link}`;
+      return `https://members.cta.tech/ctaMerchandiseDetail/?id=${this.guide.link.value}`;
     }
   }
 };
