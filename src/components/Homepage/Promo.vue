@@ -15,14 +15,14 @@
       <div class="row padding-vertical-lg">
         <div class="col-lg-offset-3 col-lg-9" v-html="widget.description.value"></div>
       </div>
-      <!-- <div v-if="widget.showLearnMoreLink" class="row">
+      <div v-if="showLearnMoreLink" class="row">
         <div class="col-sm-offset-6 col-sm-6 col-md-offset-8 col-md-4">
           <router-link
             :to="{
               name: 'page',
               params: {
-                slug: promo.relatedContent.slug,
-                id: promo.relatedContent.entryId
+                slug: widget.linkedPage.value[0].slug.value,
+                id: 'widget.linkedPage.value[0].slug.value'
               }
             }"
             class="link-button"
@@ -31,40 +31,14 @@
             <span>&gt;</span>
           </router-link>
         </div>
-      </div> -->
+      </div>
     </div>
   </section>
 </template>
 
 <script>
-// import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-// import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
-import helpers from '@/helpers';
 
-// const options = {
-//   renderMark: {
-//     [MARKS.BOLD]: text => `<strong>${text}</strong>`
-//   },
-//   renderNode: {
-//     [BLOCKS.PARAGRAPH]: (node, next) => {
-//       if (
-//         node.content.length === 1 &&
-//         node.content[0].nodeType === 'text' &&
-//         node.content[0].value.match(/^ *$/) !== null
-//       )
-//         return '';
-//       else {
-//         return `<p>${next(node.content)}</p>`;
-//       }
-//     },
-//     [INLINES.ENTRY_HYPERLINK]: (node, next) => {
-//       return helpers.resolvers.inlines_entry_hyperlink(
-//         node,
-//         next(node.content)
-//       );
-//     }
-//   }
-// };
+import helpers from '@/helpers';
 
 export default {
   name: 'Promo',
@@ -81,7 +55,13 @@ export default {
       }
       else
         return '';
+    },
+    showLearnMoreLink() {
+      return this.widget.linkedPage.value.length > 0;
     }
+  },
+  created() {
+    debugger;
   }
 };
 </script>
