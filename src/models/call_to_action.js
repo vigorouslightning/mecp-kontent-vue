@@ -9,8 +9,8 @@ export class CallToAction extends ContentItem {
         constructor() {
         super({
             propertyResolver: ((elementName) => {
-                if (elementName === 'internal_asset__pdf__doc__etc_') {
-                    return 'internalAssetPdfDocEtc';
+                if (elementName === 'internal_asset') {
+                    return 'internalAsset';
                 }
                 if (elementName === 'external_url') {
                     return 'externalUrl';

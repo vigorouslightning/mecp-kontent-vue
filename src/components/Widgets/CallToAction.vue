@@ -14,35 +14,8 @@
 </template>
 
 <script>
-// import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-// import { MARKS, BLOCKS, INLINES } from '@contentful/rich-text-types';
-import helpers from '@/helpers';
 
-// const options = {
-//   renderMark: {
-//     [MARKS.BOLD]: text => `<strong>${text}</strong>`
-//   },
-//   renderNode: {
-//     [INLINES.EMBEDDED_ENTRY]: (node, next) => {
-//       let obj = node.data.target.fields;
-//       switch (node.data.target.sys.contentType.sys.id) {
-//         case 'floatedImage':
-//           return `<img alt="" max-width="100%" src="${obj.image.fields.file.url}" style="float: ${obj.floatDirection}; margin: 10px 15px;">`;
-//       }
-//     },
-//     [INLINES.ENTRY_HYPERLINK]: (node, next) => {
-//       return helpers.resolvers.inlines_entry_hyperlink(
-//         node,
-//         next(node.content)
-//       );
-//     },
-//     [INLINES.ASSET_HYPERLINK]: (node, next) => {
-//       return `<a href="${node.data.target.fields.file.url}">${next(
-//         node.content
-//       )}</a>`;
-//     }
-//   }
-// };
+import helpers from '@/helpers';
 
 export default {
   name: 'BlueButton',
@@ -60,14 +33,13 @@ export default {
       // Call to Actions can be internal pages, internal resources, or external pages.
       // Once we find a match we drop out. There is nothing stopping a content editor from putting in multiple links
       let cta = this.widget;
-      return 'KyleActionTest.jpg';
-      // if (cta.callToAction !== undefined) {
-      //   return cta.callToAction[0].slug;
-      // } else if (cta.internalAsset !== undefined) {
-      //   return cta.internalAsset.file.url;
-      // } else if (cta.externalUrl !== undefined) {
-      //   return cta.ExternalUrl;
-      // } else throw 'Not handled or no link present';
+      if (cta.callToAction.value.length > 0) {
+        return cta.callToAction.value[0].slug.value;
+      } else if (cta.internalAsset.value.length > 0) {
+        return cta.internalAsset.value[0].url;
+      } else if (cta.externalUrl.value !== '') {
+        return cta.externalUrl.value;
+      } else throw 'Not handled or no link present';
     },
     target() {
       return this.widget.openInNewWindow ? '_blank' : undefined;
