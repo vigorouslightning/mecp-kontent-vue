@@ -45,21 +45,21 @@ let router = new Router({
 
 router.beforeEach(function (to, from, next) {
   // super duper ghetto
-  if (to.path === '/professionals')
-    router.push({
-      path: `${to.path}/about-certification`
-    });
-  else if (to.path !== '/') {
-    to.params.slug = to.params.slug.toLowerCase();
-    let slug = to.params.slug;
-    let extension = (/[.]/.exec(slug)) ? /[^.]+$/.exec(slug)[0] : undefined;
-    if (extension === 'aspx') {
-      let path = slug.replace(`.${extension}`, '');
-      router.push({
-        path: path
-      });
-    }
-  }
+  // if (to.path === '/professionals')
+  //   router.push({
+  //     path: `${to.path}/about-certification`
+  //   });
+  // else if (to.path !== '/') {
+  //   to.params.slug = to.params.slug.toLowerCase();
+  //   let slug = to.params.slug;
+  //   let extension = (/[.]/.exec(slug)) ? /[^.]+$/.exec(slug)[0] : undefined;
+  //   if (extension === 'aspx') {
+  //     let path = slug.replace(`.${extension}`, '');
+  //     router.push({
+  //       path: path
+  //     });
+  //   }
+  // }
   next();
 
 });
