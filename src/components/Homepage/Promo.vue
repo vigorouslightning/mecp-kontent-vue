@@ -59,9 +59,6 @@ export default {
     showLearnMoreLink() {
       return this.widget.linkedPage.value.length > 0;
     }
-  },
-  created() {
-    debugger;
   }
 };
 </script>
