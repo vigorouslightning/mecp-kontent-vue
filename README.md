@@ -20,10 +20,7 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-File needs the following variables put into a .env
+### File needs the following variables put into a .env before it will run
 ```
 VUE_APP_KONTENT_PROJECT_ID="<projectID>"
 ```
